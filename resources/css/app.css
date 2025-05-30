@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern button styling */
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    padding: 0.4rem 0.75rem;
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #ef4444;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2563eb;
+}
+
+.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+/* Card style for table wrapper */
+.table-card {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+}
+
+/* Table enhancements */
+table.dataTable thead th {
+    background-color: #f9fafb;
+    color: #374151;
+}
+
+table.dataTable td {
+    vertical-align: middle;
+}
+
+/* Pagination Fix */
+.dataTables_paginate .pagination .page-item .page-link {
+    border-radius: 0.375rem;
+    margin: 0 2px;
+}
