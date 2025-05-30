@@ -1,53 +1,57 @@
-```markdown
-# 🛡️ Laravel 10 Role & Permission Management System
+# 🛡️ Laravel Role & Permission Management System
 
-This project is a full-featured User Management System with Group-based and User-specific permission assignments. It includes dynamic unit and department assignments, and uses a clean architecture with modern Laravel 11 features.
+This is a complete **User Management System** developed using Laravel 10. It features manual role and permission handling using Groups (Roles) and User-specific overrides. Users can be assigned organizational Units and Departments, with dynamic dropdown filtering and Ajax-powered data management.
 
 ---
 
 ## 🚀 Features
 
-- User creation with validations
-- Role-based access control using manual group-permission management
-- User-specific permission overrides
-- Assign users to Units and Departments
-- Dynamic dropdowns for Units & Departments
-- Ajax-powered DataTables for:
-  - Users list
-  - User Groups
-  - Permission Assignments
-- Group CRUD permissions (Create, Read, Update, Delete)
-- Clean architecture (Repository + Service + Form Request)
-- UI built using Blade Templates
-- Permission control via Laravel Policies & Gates
+- User creation with proper validation
+- Group-based Role Permissions (CRUD)
+- User-specific Permission overrides
+- Units and Departments with dynamic assignment
+- Blade UI with clean, reusable partials
+- DataTables (AJAX) for:
+    - Users List
+    - User Groups
+    - Rights Assignments
+- Manual Role & Permission system (no third-party ACL)
+- Clean and modular code structure
+- Policy & Gate-based permission control
+- Laravel Form Requests, Service Layer, Repository Pattern
 
 ---
 
 ## 🧰 Tech Stack
 
-| Layer           | Technology         |
-|----------------|--------------------|
-| Framework       | Laravel 10         |
-| Language        | PHP 8.0+           |
-| Frontend        | Blade Templates    |
-| Permissions     | Manual with Policies & Gates |
-| ORM             | Eloquent ORM       |
-| Ajax Tables     | Yajra Laravel DataTables |
-| Architecture    | Repository + Service + Traits |
-| Database        | MySQL / MariaDB    |
+| Layer            | Technology              |
+|------------------|--------------------------|
+| Framework         | Laravel 10               |
+| Language          | PHP 8.1+                 |
+| Frontend          | Blade Templates (Bootstrap) |
+| Permissions       | Manual via Policies & Gates |
+| ORM               | Eloquent ORM             |
+| Ajax Tables       | Yajra Laravel DataTables |
+| Architecture      | Repository + Service + Traits |
+| Database          | MySQL / MariaDB          |
 
 ---
-## Structure Explanation:
 
-| Layer           | Responsibility           |          Example Files |
-|----------------|---------------------------|-------------------------|
-| Controller     | HTTP handling, validation    | UserController.php    |
-| Service        | Business logic               | UserService.php       |
-| Repository     | Database operations          | UserRepository.php    |
-| Request        | Validation rules             | UserStoreRequest.php  |
-| Model          | Data structure & relationships| User.php             |
+## 🧱 Folder Structure Overview
 
-## ⚙️ Setup Instructions (Fresh Machine)
+| Layer         | Description                        | Example File               |
+|---------------|-------------------------------------|----------------------------|
+| Controller     | Handles HTTP requests              | `UserController.php`       |
+| Request        | Validates incoming data            | `UserStoreRequest.php`     |
+| Service        | Business logic                     | `UserService.php`          |
+| Repository     | DB queries (via Eloquent)          | `UserRepository.php`       |
+| Model          | Data model with relationships      | `User.php`, `Group.php`    |
+| Traits         | Reusable logic                     | `HasPermissions.php`       |
+| Views          | Blade templates                    | `resources/views/users/`   |
+
+---
+
+## ⚙️ Setup Instructions (New Machine)
 
 ### 1. Clone the Repository
 
@@ -55,81 +59,65 @@ This project is a full-featured User Management System with Group-based and User
 git clone https://github.com/adilnisar272/User-Management-System.git
 cd User-Management-System
 ```
-
-### 2. Install Dependencies
+### 2. Install Backend & Frontend Dependencies
 
 ```bash
 composer install
 npm install
-npm run build
 ```
 
-### 3. Set Up Environment File
+### 3. Configure Environment
 
 ```bash
 cp .env.example .env
 php artisan key:generate
+
 ```
+Edit .env and update your database credentials accordingly.
 
-> Update `.env` with your DB credentials.
 
-### 4. Run Migrations and Seeders
+### 4. Run Migrations & Seeders
 
 ```bash
 php artisan migrate --seed
 ```
+This command will:
 
-This will:
-- Create necessary tables
-- Seed default user groups, permissions, and one admin user
+* Create all required tables
+* Seed default user groups, permissions
+* Create one default Admin user
 
-### 5. Serve the Application
+### 5. Start the Server
 
 ```bash
 php artisan serve
+npm run dev
 ```
+Visit: http://localhost:8000
 
-Visit: `http://localhost:8000`
-
----
-
-## 🧪 Default Admin Login
-
-```txt
-Email: admin@example.com
+### 🧪 Default Admin Login
+```bash
+Email:    admin@example.com
 Password: password
 ```
+> You can update credentials in the database or seeders.
 
-> You can change this in the seeder or directly in the database.
----
-
-## ✅ Completed Functional Modules
-
-- [x] Create/Edit/Delete Users
-- [x] Group & User-specific Permissions
-- [x] Unit & Department Management
-- [x] Admin Dashboard
-- [x] Blade-based UI
-- [x] Dynamic Dropdowns
-- [x] AJAX-powered Tables
-- [x] Full Laravel 11 Compliance
-
----
-
-## 📩 Contribution
-
-This is an assignment-ready Laravel 11 project. Fork it or customize it as needed.
-
----
+### ✅ Modules Completed
+* User CRUD (with Form Request Validation)
+* Role Management with Permissions
+* Unit & Department Assignment
+* Admin Dashboard
+* Blade UI with Components & Partials
+* DataTables with Search, Filter, Pagination
+* Fully Laravel 10 Compatible (PHP 8.1+)
 
 ## 🧑‍💻 Author
+Mohammad Adil Khan | Laravel Developer | PHP Enthusiast
 
-**Mohammad Adil Khan**  
-_Laravel Developer | PHP Enthusiast_
+### 📜 License
+This project is licensed under the MIT License.
 
----
-
-## 📜 License
-
-This project is open-source and available for use or modification under [MIT License](LICENSE).
-```
+# 📝 Notes
+* This is a custom implementation of a Role/Permission system (not using packages like Spatie).
+* Policies and Gates are applied on routes and controllers for permission checks.
+* If you wish to integrate Spatie later, the structure allows refactoring.
